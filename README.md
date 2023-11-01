@@ -1,0 +1,1 @@
+# loginom-session-generator
