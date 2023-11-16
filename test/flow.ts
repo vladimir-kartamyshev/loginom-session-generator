@@ -2,7 +2,7 @@ import { Builder, until, By } from 'selenium-webdriver';
 import { getChromeCapabilities } from '../selenium.config';
 
 const url = process.env.URL || 'http://user@dev-test/staging/app-debug/';
-const sessionCount = Number(process.env.SESSIONS_COUNT) || 50;
+const sessionCount = Number(process.env.SESSIONS_COUNT) || 201;
 const sessionsDuration = Number(process.env.SESSIONS_DURATION) || 60;
 const buttonClass = 'bg-icon-main-toolbar-logo';
 const logInterval = 10; // Лог каждые 10 секунд
@@ -39,7 +39,7 @@ it('', async () => {
   const driver = new Builder().withCapabilities(getChromeCapabilities()).build();
   await driver.get(url);
 
-  for (let i = 0; i < sessionCount; i++) {
+  for (let i = 1; i < sessionCount; i++) {
     driver.executeScript(`window.open("${url}")`);
     try {
       await driver.wait(until.elementLocated(By.className(buttonClass)), 180000);
